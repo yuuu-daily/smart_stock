@@ -1,0 +1,16 @@
+
+.radioLabel {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.radioInput {
+    margin-right: 0.5rem;
+}
+
+.radioText {
+    font-size: 1rem;
+    color: white;
+}

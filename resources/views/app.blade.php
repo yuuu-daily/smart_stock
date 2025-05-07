@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    @vite('resources/js/app.jsx')
+    <meta charset="UTF-8">
+    <title>SmartStock</title>
+    @viteReactRefresh
+    @vite(['resources/css/app.css', 'resources/js/app.tsx'])
 </head>
 <body>
     @inertia
