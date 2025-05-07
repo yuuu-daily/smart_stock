@@ -2,9 +2,9 @@ import { FC } from "react";
 import { Controller } from "react-hook-form";
 import { useImportTemplate } from "./useImportTemplate";
 
-import { StockTable } from "@/components/organisms/StockTable";
-import { CommonButton } from "@/components/atoms/CommonButton";
-import { InputFormSection } from "@/components/molecules/InputFormSection";
+import { StockTable } from "../../components/organisms/StockTable";
+import { CommonButton } from "../../components/atoms/CommonButton/CommonButton";
+import { InputFormSection } from "../../components/molecules/InputFormSection";
 
 import styles from "./style.module.css";
 
