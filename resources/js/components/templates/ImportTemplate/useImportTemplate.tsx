@@ -2,7 +2,14 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { usePage, router } from '@inertiajs/react';
 
-type Mode = 'in' | 'out';
+type Mode = 0 | 1;
+
+type Product = {
+    id: number;
+    title: string;
+    isbn: string;
+    stock: number;
+};
 
 export const useImportTemplate = () => {
     const {
@@ -11,9 +18,9 @@ export const useImportTemplate = () => {
         formState: { errors },
     } = useForm<{ barcode: string }>();
 
-    const [mode, setMode] = useState<Mode>('in');
+    const [mode, setMode] = useState<Mode>(0);
     const [selectedBook, setSelectedBook] = useState<any | null>(null); // 型があれば明示的に定義してください
-    const books = usePage().props.books || [];
+    const products = usePage().props.products ?? [];
 
     const handleModeChange = (value: Mode) => setMode(value);
 
@@ -41,6 +48,6 @@ export const useImportTemplate = () => {
         setSelectedBook,
         mode,
         handleModeChange,
-        books,
+        products,
     };
 };

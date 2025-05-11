@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\StockLog;
+use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,10 +13,11 @@ class StockController extends Controller
 {
     public function index()
     {
-        $products = Product::select('id', 'title', 'barcode', 'stock')->get();
-
-        return Inertia::render('Stock/BulkOut', [
+        $products = Product::all();
+        $users = User::all();
+        return Inertia::render('Stock/ImportPage', [
             'products' => $products,
+            'users' => $users,
         ]);
     }
 
