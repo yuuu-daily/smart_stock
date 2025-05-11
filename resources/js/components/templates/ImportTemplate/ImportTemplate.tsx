@@ -6,6 +6,8 @@ import { BaseTableLayout } from "../../../components/organisms/BaseTableLayout/B
 import { CommonButton } from "../../../components/atoms/CommonButton/CommonButton";
 import { InputFormSection } from "../../../components/molecules/InputFormSection/InputFormSection";
 
+import { usePage } from '@inertiajs/react';
+
 import styles from "./style.module.css";
 
 export const ImportTemplate: FC = () => {
@@ -17,7 +19,7 @@ export const ImportTemplate: FC = () => {
         setSelectedBook,
         mode,
         handleModeChange,
-        books,
+        products,
     } = useImportTemplate();
 
     return (
@@ -26,16 +28,16 @@ export const ImportTemplate: FC = () => {
 
             <div className={styles.modeToggle}>
                 <label>
-                    <input type="radio" name="mode" value="in" checked={mode === "in"} onChange={() => handleModeChange("in")} />
+                    <input type="radio" name="mode" value="0" checked={mode === 0} onChange={() => handleModeChange(0)} />
                     入庫
                 </label>
                 <label>
-                    <input type="radio" name="mode" value="out" checked={mode === "out"} onChange={() => handleModeChange("out")} />
+                    <input type="radio" name="mode" value="1" checked={mode === 1} onChange={() => handleModeChange(1)} />
                     出庫
                 </label>
             </div>
 
-            <BaseTableLayout data={books ?? []} selectedBook={selectedBook} onSelect={setSelectedBook} />
+            <BaseTableLayout data={products ?? []} selectedBook={selectedBook} onSelect={setSelectedBook} />
 
             <form className={styles.form} onSubmit={handleBarcodeSubmit}>
                 <Controller
