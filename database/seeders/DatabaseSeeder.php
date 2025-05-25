@@ -73,6 +73,7 @@ class DatabaseSeeder extends Seeder
             if ($d[1]) $user->name = $d[1];
             $user->role = $d[2];
             if ($d[3]) $user->name_kana = $d[3];
+            $user->workos_id = $user->id;
             $user->save();
             $id++;
         }
