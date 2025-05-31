@@ -46,4 +46,22 @@ class StockController extends Controller
 
         return redirect()->route('stock.bulk_out')->with('message', '一括出庫が完了しました');
     }
+
+    public function handleScan(Request $request)
+    {
+        $barcode = $request->input('barcode');
+
+        $product = Product::where('barcode', $barcode)->first();
+
+        if (!$product) {
+            return back()->withErrors(['barcode' => '該当する商品が見つかりませんでした。']);
+        }
+
+        // 在庫数を1つ減らすなどの処理（出庫処理）
+        $product->stock = max(0, $product->stock - 1);
+        $product->save();
+
+        return redirect()->back()->with('success', "{$product->name} を出庫しました。");
+    }
+
 }
