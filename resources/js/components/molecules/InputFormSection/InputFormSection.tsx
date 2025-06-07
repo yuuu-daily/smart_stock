@@ -1,5 +1,5 @@
 import { FC, ComponentProps } from "react";
-import { InputForm } from "../../atoms/InputFrom";
+import { InputForm } from "../../atoms/InputForm/InputForm";
 import styles from "./style.module.css";
 
 type InputFormSectionProps = ComponentProps<"input"> & {

@@ -5,6 +5,7 @@ import styles from './style.module.css'; // ← CSSモジュールを読み込�
 export const BaseTableLayout = ({ onSelect, selectedBook, data }) =>  {
     const columns = [
         { header: '書籍名', accessorKey: 'title' },
+        { header: 'JANコード', accessorKey: 'barcode_jan' },
         { header: 'ISBN', accessorKey: 'isbn' },
         { header: '在庫数', accessorKey: 'stock' },
     ];
