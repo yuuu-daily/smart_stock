@@ -1,0 +1,23 @@
+.li {
+    list-style: none;
+}
+
+.link {
+    display: inline-block;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937; /* text-gray-900 */
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border-radius: 6px;
+}
+
+.link:hover,
+.linkActive {
+    background-color: #e0e7ff; /* indigo-100 相当 */
+}
+
+.active {
+    text-decoration: underline;
+}

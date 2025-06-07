@@ -45,7 +45,7 @@ Route::get('/stock/import', [StockController::class, 'index'])->name('stock.impo
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 

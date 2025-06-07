@@ -18,10 +18,10 @@ class DashboardController extends Controller
     {
         $auth = Auth::user();
         $products = Product::all();
-//        $users = User::all();
+        $users = User::all();
         return Inertia::render('Stock/ImportPage', [
             'products' => $products,
-//            'users' => $users,
+            'users' => $users,
         ]);
     }
 

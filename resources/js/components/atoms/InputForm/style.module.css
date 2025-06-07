@@ -1,16 +1,19 @@
-.input {
-    color: white;
-    border: none;
-    background: rgba(0, 0, 0, 0.2);
+.button {
+    display: block;
     width: 100%;
-    height: 50px;
-    padding: 10px;
-    box-sizing: border-box;
-    font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
-    border-radius: 5px;
+    background-color: #ff9900;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    appearance: none;
+    border-radius: 10px;
+    transition: 0.3s;
 }
 
-.input::placeholder {
-    color: #c0c0c0;
+.button:hover {
+    background-color: #d87e00;
 }
