@@ -49,19 +49,25 @@ class StockController extends Controller
 
     public function handleScan(Request $request)
     {
-        $barcode = $request->input('barcode');
+        $validated = $request->validate([
+            'barcode' => 'required|string',
+            'mode' => 'required|in:0,1',
+            'product_id' => 'required|integer',
+        ]);
 
-        $product = Product::where('barcode', $barcode)->first();
-
-        if (!$product) {
-            return back()->withErrors(['barcode' => '該当する商品が見つかりませんでした。']);
+        // 出庫 or 入庫処理
+        $book = Product::find($validated['product_id']);
+        if ($validated['mode'] == 1) {
+            // 出庫
+            $book->stock = max(0, $book->stock - 1);
+        } else {
+            // 入庫
+            $book->stock += 1;
         }
+        $book->save();
 
-        // 在庫数を1つ減らすなどの処理（出庫処理）
-        $product->stock = max(0, $product->stock - 1);
-        $product->save();
-
-        return redirect()->back()->with('success', "{$product->name} を出庫しました。");
+        return back()->with('success', '保存しました');
+//        return redirect()->back()->with('success', "{$product->name} を出庫しました。");
     }
 
 }
