@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
+
 Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
@@ -29,7 +30,7 @@ Route::middleware([
 //        return Inertia::render('SimpleBarcodePage');
 //    });
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::post('/stock/scan-barcode', [StockController::class, 'handleScan'])->name('stock.scan');
+    Route::post('/stock/scan-barcode', [StockController::class, 'handleScan']);
 
 });
 //Route::get('dashboard', function () {

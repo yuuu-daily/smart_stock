@@ -1,6 +1,6 @@
-import { useForm } from 'react-hook-form';
+import { useForm, usePage } from '@inertiajs/react';
 import { useState } from 'react';
-import { usePage, router } from '@inertiajs/react';
+import { toast } from 'react-toastify';
 
 type Mode = 0 | 1;
 
@@ -12,37 +12,46 @@ type Product = {
 };
 
 export const useImportTemplate = () => {
-    const {
-        control,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<{ barcode: string }>();
-
+    const products = usePage().props.products as Product[];
     const [mode, setMode] = useState<Mode>(0);
-    const [selectedBook, setSelectedBook] = useState<any | null>(null); // 型があれば明示的に定義してください
-    const products = usePage().props.products ?? [];
+    const [selectedBook, setSelectedBook] = useState<Product | null>(null);
 
-    const handleModeChange = (value: Mode) => setMode(value);
+    const form = useForm({
+        barcode: '',
+        mode: mode,
+        product_id: null as number | null,
+    });
 
-    const handleBarcodeSubmit = handleSubmit(({ barcode }) => {
+    const handleModeChange = (value: Mode) => {
+        setMode(value);
+        form.setData('mode', value); // useFormのstate更新
+    };
+
+    const handleBarcodeSubmit = (e?: React.FormEvent) => {
+        if (e) e.preventDefault();
+        if (!form.data.barcode) return;
         if (!selectedBook) {
-            alert('本を選択してください');
+            toast.warn('本を選択してください');
             return;
         }
 
-        router.post('/stock/barcode', {
-            mode,
-            isbn: barcode,
-            book_id: selectedBook.id,
-        }, {
-            onSuccess: () => console.log('送信完了'),
-            onError: (err) => console.error('送信失敗', err),
+        form.setData('mode', mode);
+        form.setData('product_id', selectedBook.id);
+
+        form.post('/stock/scan-barcode', {
+            preserveScroll: true,
+            onSuccess: () => {
+                toast.success('保存しました');
+                form.setData('barcode', '');
+            },
+            onError: () => {
+                toast.error('保存に失敗しました');
+            },
         });
-    });
+    };
 
     return {
-        control,
-        errors,
+        form,
         handleBarcodeSubmit,
         selectedBook,
         setSelectedBook,
