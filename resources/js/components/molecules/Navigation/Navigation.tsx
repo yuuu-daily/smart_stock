@@ -20,7 +20,7 @@ export const Navigation = () => {
                         <NavigationLink title="在庫一覧" linkPath={NAVIGATION_PATH.PRODUCT} />
                         <NavigationLink title="在庫入出庫履歴" linkPath={NAVIGATION_PATH.STOCK_LOGS} />
                         <NavigationLink title="ユーザ管理" linkPath={NAVIGATION_PATH.USERS} />
-                        <NavigationLink title="カテゴリ管理" linkPath={NAVIGATION_PATH.CATEGORIES} />
+                        {/*<NavigationLink title="カテゴリ管理" linkPath={NAVIGATION_PATH.CATEGORIES} />*/}
                     </ul>
                 </div>
 

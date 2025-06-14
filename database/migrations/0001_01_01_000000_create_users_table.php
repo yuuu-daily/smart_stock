@@ -16,7 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('name_kana')->nullable();
             $table->string('email')->unique();
+            $table->integer('company_id')->default(0);
+            $table->string('address_1')->nullable();
+            $table->string('address_2')->nullable();
+            $table->string('phone_number')->nullable();
             $table->integer('role')->default(0);
+            $table->string('post_code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('workos_id')->unique();
             $table->string('password')->nullable();
