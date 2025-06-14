@@ -30,16 +30,33 @@ export const useImportTemplate = () => {
         form.setData('mode', mode);
         form.setData('product_id', selectedBook.id);
 
-        form.post('/stock/scan-barcode', {
-            preserveScroll: true,
-            onSuccess: () => {
-                toast.success('保存しました');
-                form.setData('barcode', '');
-            },
-            onError: () => {
-                toast.error('保存に失敗しました');
-            },
-        });
+        // form.post('/stock/scan-barcode', {
+        //     preserveScroll: true,
+        //     onSuccess: () => {
+        //         toast.success('保存しました');
+        //         form.setData('barcode', '');
+        //     },
+        //     onError: (errors) => {
+        //         if (form.errors.barcode) {
+        //             toast.error(form.errors.barcode);
+        //         } else {
+        //             toast.error('保存に失敗しました');
+        //         }
+        //     },
+        // });
+
+        form.post('/stock/scan-barcode',
+            {
+                preserveScroll: true,
+                onSuccess: () => {
+                    toast.success('保存しました');
+                    form.setData('barcode', '');
+                },
+                onError: () => {
+                    toast.error('保存に失敗しました');
+                },
+            }
+        );
     };
 
     return {

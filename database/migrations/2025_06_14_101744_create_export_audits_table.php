@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stock_logs', function (Blueprint $table) {
+        Schema::create('export_audits', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->comment('操作者');
             $table->integer('product_id');
-            $table->integer('user_id')->comment('発送先担当者');
             $table->integer('quantity')->default(0);
             $table->integer('status')->default(0)->comment('0: in, 1: out');
-            $table->string('related_link')->nullable();
-            $table->text('memo')->nullable();
-            $table->integer('progress')->default(0)->comment('1: 緊急, 2: 完了, 3: 進行中');
-            $table->dateTime('shipping_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stock_logs');
+        Schema::dropIfExists('export_audits');
     }
 };

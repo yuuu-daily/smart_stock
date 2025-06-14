@@ -11,7 +11,6 @@ const columns: ColumnDef<Product>[] = [
     {header: '郵便番号', accessorKey: 'post_code'},
     {header: '住所①', accessorKey: 'address1'},
     {header: '住所②(建物名)', accessorKey: 'address2'},
-    {header: '住所②', accessorKey: 'address2'},
     {header: '届け先名(法人名・会社名)', accessorKey: 'company'},
     {header: 'お名前', accessorKey: 'name'},
     {header: '電話番号', accessorKey: 'telephone'},

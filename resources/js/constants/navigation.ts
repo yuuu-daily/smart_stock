@@ -24,7 +24,7 @@ export const NAVIGATION_PATH = {
     PRODUCT: "/dashboard",
     STOCK_LOGS: "/stock_logs",
     USERS: "/users",
-    CATEGORIES: "/categories",
+    // CATEGORIES: "/categories",
     COMPANY: "/company",
     LOGIN: "/login",
     LOGOUT: "/logout",

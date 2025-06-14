@@ -8,6 +8,8 @@ use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+
 
 class StockController extends Controller
 {
@@ -52,11 +54,16 @@ class StockController extends Controller
         $validated = $request->validate([
             'barcode' => 'required|string',
             'mode' => 'required|in:0,1',
-            'product_id' => 'required|integer',
+//            'product_id' => 'required|integer',
         ]);
 
         // 出庫 or 入庫処理
-        $book = Product::find($validated['product_id']);
+        $book = Product::where('isbn', $validated['barcode'])->first();
+        if (!$book) {
+            throw ValidationException::withMessages([
+                'barcode' => '該当の書籍が見つかりませんでした。',
+            ]);
+        }
         if ($validated['mode'] == 1) {
             // 出庫
             $book->stock = max(0, $book->stock - 1);

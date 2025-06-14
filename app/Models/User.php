@@ -23,6 +23,12 @@ class User extends Authenticatable
         'password',
         'workos_id',
         'avatar',
+        'role',
+        'company_id',
+        'post_code',
+        'address_1',
+        'address_2',
+        'phone_number',
     ];
 
     /**
