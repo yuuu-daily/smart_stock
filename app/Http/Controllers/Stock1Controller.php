@@ -9,7 +9,7 @@ use Inertia\Inertia;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class StockController extends Controller
+class Stock1Controller extends Controller
 {
     public function index()
     {

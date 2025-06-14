@@ -18,9 +18,9 @@ export const Navigation = () => {
                     <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Logo" className={styles.logo} />
                     <ul className={styles.ul}>
                         <NavigationLink title="在庫一覧" linkPath={NAVIGATION_PATH.PRODUCT} />
-                        <NavigationLink title="カテゴリ一覧" linkPath={NAVIGATION_PATH.FEATURES} />
-                        <NavigationLink title="ユーザ管理" linkPath={NAVIGATION_PATH.MARKETPLACE} />
-                        <NavigationLink title="法人管理" linkPath={NAVIGATION_PATH.COMPANY} />
+                        <NavigationLink title="在庫入出庫履歴" linkPath={NAVIGATION_PATH.STOCK_LOGS} />
+                        <NavigationLink title="ユーザ管理" linkPath={NAVIGATION_PATH.USERS} />
+                        <NavigationLink title="カテゴリ管理" linkPath={NAVIGATION_PATH.CATEGORIES} />
                     </ul>
                 </div>
 

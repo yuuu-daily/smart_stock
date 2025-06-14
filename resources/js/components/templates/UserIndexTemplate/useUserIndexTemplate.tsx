@@ -1,10 +1,10 @@
 import { useForm, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import type { Product, Mode } from '@/Types';
+import type { Product, Mode, User } from '@/Types';
 
-export const useImportTemplate = () => {
-    const products = usePage().props.products as Product[];
+export const useUserIndexTemplate = () => {
+    const users = usePage().props.users as User[];
     const [mode, setMode] = useState<Mode>(0);
     const [selectedBook, setSelectedBook] = useState<Product | null>(null);
 
@@ -22,13 +22,13 @@ export const useImportTemplate = () => {
     const handleBarcodeSubmit = (e?: React.FormEvent) => {
         if (e) e.preventDefault();
         if (!form.data.barcode) return;
-        if (!selectedBook) {
-            toast.warn('本を選択してください');
-            return;
-        }
+        // if (!selectedBook) {
+        //     toast.warn('本を選択してください');
+        //     return;
+        // }
 
         form.setData('mode', mode);
-        form.setData('product_id', selectedBook.id);
+        // form.setData('product_id', selectedBook.id);
 
         form.post('/stock/scan-barcode', {
             preserveScroll: true,
@@ -49,6 +49,6 @@ export const useImportTemplate = () => {
         setSelectedBook,
         mode,
         handleModeChange,
-        products,
+        users,
     };
 };
