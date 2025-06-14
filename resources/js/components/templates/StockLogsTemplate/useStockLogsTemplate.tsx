@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import type { Product, Mode } from '@/Types';
 
-export const useImportTemplate = () => {
+export const useStockLogsTemplate = () => {
     const products = usePage().props.products as Product[];
     const [mode, setMode] = useState<Mode>(0);
     const [selectedBook, setSelectedBook] = useState<Product | null>(null);

@@ -111,7 +111,16 @@ import { BaseTableLayout } from "../../../components/organisms/BaseTableLayout/B
 import { CommonButton } from "../../../components/atoms/CommonButton/CommonButton";
 import { InputFormSection } from "../../../components/molecules/InputFormSection/InputFormSection";
 import { Navigation } from "../../../components/molecules/Navigation/Navigation";
+import { Product } from '../../../Types/index'; // 例：共通型から
+import {ColumnDef} from "@tanstack/react-table";
 import styles from "./style.module.css";
+
+const columns: ColumnDef<Product>[] = [
+    {header: '書籍名', accessorKey: 'title'},
+    {header: 'JANコード', accessorKey: 'barcode_jan'},
+    {header: 'ISBN', accessorKey: 'isbn'},
+    {header: '在庫数', accessorKey: 'stock'},
+];
 
 export const ImportTemplate: FC = () => {
     const {
@@ -161,6 +170,7 @@ export const ImportTemplate: FC = () => {
 
                 <BaseTableLayout
                     data={products}
+                    columns={columns}
                     selectedBook={selectedBook}
                     onSelect={setSelectedBook}
                 />
