@@ -1,12 +1,12 @@
 import { useForm, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import type { Product, Mode } from '@/Types';
+import type { Log, Mode } from '@/Types';
 
 export const useStockLogsTemplate = () => {
-    const products = usePage().props.products as Product[];
+    const logs = usePage().props.logs as Log[];
     const [mode, setMode] = useState<Mode>(0);
-    const [selectedBook, setSelectedBook] = useState<Product | null>(null);
+    const [selectedBook, setSelectedBook] = useState<Log | null>(null);
 
     const form = useForm({
         barcode: '',
@@ -49,6 +49,6 @@ export const useStockLogsTemplate = () => {
         setSelectedBook,
         mode,
         handleModeChange,
-        products,
+        logs,
     };
 };

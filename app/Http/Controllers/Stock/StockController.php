@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Stock;
 use App\Http\Controllers\Controller;
 use App\Models\StockLog;
 use App\Models\User;
+use App\Repositories\StockLogRepository;
 use Inertia\Inertia;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -17,9 +18,10 @@ class StockController extends Controller
     {
         $products = Product::all();
         $users = User::all();
+        $logs = StockLogRepository::getLogs();
         return Inertia::render('Stock/StockLogsPage', [
             'products' => $products,
-            'users' => $users,
+            'logs' => $logs,
         ]);
     }
 

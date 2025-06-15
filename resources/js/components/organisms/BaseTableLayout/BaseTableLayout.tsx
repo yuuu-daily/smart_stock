@@ -76,36 +76,38 @@ export function BaseTableLayout<T extends { id: number }>({
     });
 
     return (
-        <table className={styles.table}>
-            <thead>
-            {table.getHeaderGroups().map((hg) => (
-                <tr key={hg.id}>
-                    {hg.headers.map((h) => (
-                        <th key={h.id} className={styles.th}>
-                            {flexRender(h.column.columnDef.header, h.getContext())}
-                        </th>
-                    ))}
-                </tr>
-            ))}
-            </thead>
-            <tbody>
-            {table.getRowModel().rows.map((row) => (
-                <tr
-                    key={row.id}
-                    onClick={() => onSelect(row.original)}
-                    className={`${styles.tr} ${
-                        selectedBook?.id === row.original.id ? styles.selectedRow : ''
-                    }`}
-                >
-                    {row.getVisibleCells().map((cell) => (
-                        <td key={cell.id} className={styles.td}>
-                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                        </td>
-                    ))}
-                </tr>
-            ))}
-            </tbody>
-        </table>
+        <div className={styles.card}>
+            <table className={styles.table}>
+                <thead>
+                {table.getHeaderGroups().map((hg) => (
+                    <tr key={hg.id}>
+                        {hg.headers.map((h) => (
+                            <th key={h.id} className={styles.th}>
+                                {flexRender(h.column.columnDef.header, h.getContext())}
+                            </th>
+                        ))}
+                    </tr>
+                ))}
+                </thead>
+                <tbody>
+                {table.getRowModel().rows.map((row) => (
+                    <tr
+                        key={row.id}
+                        onClick={() => onSelect(row.original)}
+                        className={`${styles.tr} ${
+                            selectedBook?.id === row.original.id ? styles.selectedRow : ''
+                        }`}
+                    >
+                        {row.getVisibleCells().map((cell) => (
+                            <td key={cell.id} className={styles.td}>
+                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        </div>
     );
 }
 

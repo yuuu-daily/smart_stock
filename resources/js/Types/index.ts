@@ -50,3 +50,15 @@ export interface Product {
     isbn: string;
     stock: number;
 }
+
+export interface Log {
+    id: number;
+    title: string;
+    name: string;
+    email: string;
+    quantity: number;
+    company_name: string;
+    // created_at: string;
+    // updated_at: string;
+    // [key: string]: unknown; // This allows for additional properties...
+}
