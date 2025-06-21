@@ -87,7 +87,9 @@ export const ImportTemplate: FC = () => {
                             }
                         }}
                     />
-                    <CommonButton type="submit">読み取り</CommonButton>
+                    <div className={styles.buttonContainer}>
+                        <CommonButton type="submit">読み取り</CommonButton>
+                    </div>
                 </form>
             </div>
         </>

@@ -1,19 +1,54 @@
+/*.button {*/
+/*    display: block;*/
+/*    width: 100%;*/
+/*    background-color: #ff9900;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    outline: none;*/
+/*    padding: 20px;*/
+/*    font-size: 24px;*/
+/*    font-weight: bold;*/
+/*    color: #fff;*/
+/*    appearance: none;*/
+/*    border-radius: 10px;*/
+/*    transition: 0.3s;*/
+/*}*/
+
+/*.button:hover {*/
+/*    background-color: #d87e00;*/
+/*}*/
 .button {
-    display: block;
-    width: 100%;
+    display: inline-block;
     background-color: #ff9900;
     border: none;
     cursor: pointer;
     outline: none;
-    padding: 20px;
-    font-size: 24px;
+    padding: 12px 20px;
+    font-size: 16px;
     font-weight: bold;
     color: #fff;
     appearance: none;
     border-radius: 10px;
     transition: 0.3s;
+    width: auto;
+    max-width: 100%;
 }
 
-.button:hover {
-    background-color: #d87e00;
+/* デフォルトは適度な幅で中央揃え */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* スマホサイズ以下の場合は全幅に近くする */
+@media (max-width: 480px) {
+    .button {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .button-container {
+        justify-content: stretch;
+    }
 }

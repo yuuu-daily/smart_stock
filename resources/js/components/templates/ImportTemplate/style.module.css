@@ -12,9 +12,25 @@
     margin-bottom: 1rem;
 }
 
+/*.form {*/
+/*    display: flex;*/
+/*    gap: 1rem;*/
+/*    margin-top: 2rem;*/
+/*}*/
+
 .form {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* 🔹 右寄せにする */
+    align-items: center;
     gap: 1rem;
     margin-top: 2rem;
 }
 
+
+@media (max-width: 600px) {
+    .form {
+        flex-direction: column;
+        align-items: flex-end; /* 各行を右寄せ */
+    }
+}

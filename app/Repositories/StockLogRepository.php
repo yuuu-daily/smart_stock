@@ -15,8 +15,8 @@ class StockLogRepository extends BaseRepository
     {
         $sql = <<< EOS
 SELECT
-	s.id, p.title, s.quantity,
-	u.name AS name, u.email,
+	s.id, p.title, s.quantity, s.shipping_at, s.status, s.progress,
+	u.name AS name, u.email, u.phone_number, u.address_1, u.address_2,
 	c.name AS company_name
 FROM
 	stock_logs AS s
