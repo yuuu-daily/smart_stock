@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './style.module.css';
 
-export const CreateButton = () => {
+type CreateButtonProps = {
+    onClick?: () => void;
+    children?: React.ReactNode;
+};
 
+export const CreateButton: FC<CreateButtonProps> = ({ onClick, children }) => {
     return (
-        <div className={styles.buttonContainer}>
-            <a href="/stock_logs/create">
-                新規追加
-            </a>
-        </div>
+        <button type="button" className={styles.buttonContainer} onClick={onClick}>
+            {children ?? '新規追加'}
+        </button>
     );
 };
+
 
 

@@ -33,6 +33,7 @@ Route::middleware([
 //    });
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/stock/scan-barcode', [StockController::class, 'handleScan'])->name('stock.scan');
+    Route::post('/stock/add-user', [StockController::class, 'addUser'])->name('stock.addUser');
     // 在庫入出庫ログ画面
     Route::get('/stock_logs', [StockController::class, 'index'])->name('stock_logs.index');
     Route::get('/users', [UserController::class, 'index'])->name('user.index');

@@ -75,7 +75,6 @@ export const ImportTemplate: FC = () => {
                         placeholder="バーコードをスキャン"
                         value={form.data.barcode}
                         onChange={(e) => form.setData('barcode', e.target.value)}
-                        errorMessage={form.errors.barcode}
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
                                 e.preventDefault();
@@ -90,6 +89,12 @@ export const ImportTemplate: FC = () => {
                     <div className={styles.buttonContainer}>
                         <CommonButton type="submit">読み取り</CommonButton>
                     </div>
+
+                    {form.errors.barcode && (
+                        <div className={styles.errorMessage}>
+                            {form.errors.barcode}
+                        </div>
+                    )}
                 </form>
             </div>
         </>

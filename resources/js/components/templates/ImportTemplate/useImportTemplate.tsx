@@ -11,7 +11,7 @@ export const useImportTemplate = () => {
     const form = useForm({
         barcode: '',
         mode: mode,
-        product_id: null as number | null,
+        // product_id: null as number | null,
     });
 
     const handleModeChange = (value: Mode) => {
@@ -28,35 +28,23 @@ export const useImportTemplate = () => {
         }
 
         form.setData('mode', mode);
-        form.setData('product_id', selectedBook.id);
+        // form.setData('product_id', selectedBook.id);
 
-        // form.post('/stock/scan-barcode', {
-        //     preserveScroll: true,
-        //     onSuccess: () => {
-        //         toast.success('保存しました');
-        //         form.setData('barcode', '');
-        //     },
-        //     onError: (errors) => {
-        //         if (form.errors.barcode) {
-        //             toast.error(form.errors.barcode);
-        //         } else {
-        //             toast.error('保存に失敗しました');
-        //         }
-        //     },
-        // });
-
-        form.post('/stock/scan-barcode',
-            {
-                preserveScroll: true,
-                onSuccess: () => {
-                    toast.success('保存しました');
-                    form.setData('barcode', '');
-                },
-                onError: () => {
+        form.post('/stock/scan-barcode', {
+            preserveScroll: true,
+            onSuccess: () => {
+                toast.success('保存しました');
+                form.setData('barcode', '');
+            },
+            onError: (errors) => {
+                if (form.errors.barcode) {
+                    toast.error(form.errors.barcode);
+                } else {
                     toast.error('保存に失敗しました');
-                },
-            }
-        );
+                }
+            },
+        });
+
     };
 
     return {
