@@ -100,9 +100,9 @@ class DatabaseSeeder extends Seeder
 //        }
         $paths = [
             'database/sql/init/products.sql',
-//            'database/sql/init/companies.sql',
+            'database/sql/init/companies.sql',
 //            'database/sql/init/courses.sql',
-//            'database/sql/init/jukus.sql',
+            'database/sql/init/stock_logs.sql',
 //            'database/sql/init/users.sql',
         ];
 //
