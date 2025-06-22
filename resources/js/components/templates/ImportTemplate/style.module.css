@@ -34,3 +34,11 @@
         align-items: flex-end; /* 各行を右寄せ */
     }
 }
+
+.errorMessage {
+    color: red;
+    font-size: 0.875rem; /* text-sm */
+    margin-top: 0.5rem;
+    width: 100%;
+    text-align: right;
+}

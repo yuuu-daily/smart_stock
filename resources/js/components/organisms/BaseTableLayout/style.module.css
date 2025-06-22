@@ -32,7 +32,7 @@
     padding: 12px 16px;
     text-align: left;
     border-bottom: 1px solid #e5e7eb;
-    font-size: 0.70rem;
+    font-size: 0.65rem;
     background-color: #f9fafb; /* ← ヘッダーだけ灰色背景 */
     font-weight: 600; /* 太字にするなら追加 */
 }
@@ -43,7 +43,7 @@
     cursor: pointer;
     transition: background-color 0.2s;
     border-bottom: 1px solid #e5e7eb;
-    font-size: 0.70rem;
+    font-size: 0.65rem;
     background-color: #ffffff; /* 本文は白背景のまま */
 }
 

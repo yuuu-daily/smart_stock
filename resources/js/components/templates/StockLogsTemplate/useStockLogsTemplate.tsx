@@ -1,54 +1,60 @@
+// useStockLogsTemplate.tsx
 import { useForm, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import type { Log, Mode } from '@/Types';
+import type { Log, User } from '@/Types';
 
 export const useStockLogsTemplate = () => {
     const logs = usePage().props.logs as Log[];
-    const [mode, setMode] = useState<Mode>(0);
-    const [selectedBook, setSelectedBook] = useState<Log | null>(null);
+    const users = usePage().props.users as User[];
+
+    const [selectedUser, _setSelectedUser] = useState<{ value: number; label: string } | null>(null);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const form = useForm({
-        barcode: '',
-        mode: mode,
-        product_id: null as number | null,
+        user_id: null as number | null,
     });
-
-    const handleModeChange = (value: Mode) => {
-        setMode(value);
-        form.setData('mode', value); // useFormのstate更新
+    const setSelectedUser = (user: { value: number; label: string } | null) => {
+        _setSelectedUser(user);
+        form.setData('user_id', user ? user.value : null);
     };
 
-    const handleBarcodeSubmit = (e?: React.FormEvent) => {
-        if (e) e.preventDefault();
-        if (!form.data.barcode) return;
-        if (!selectedBook) {
-            toast.warn('本を選択してください');
+    const handleAddUser = () => {
+        if (!selectedUser) {
+            toast.warn('ユーザーを選択してください');
             return;
         }
 
-        form.setData('mode', mode);
-        form.setData('product_id', selectedBook.id);
-
-        form.post('/stock/scan-barcode', {
+        form.post('/stock/add-user', {
             preserveScroll: true,
             onSuccess: () => {
-                toast.success('保存しました');
-                form.setData('barcode', '');
+                toast.success('ユーザーを追加しました');
+                closeModal();
+                setSelectedUser(null);
             },
             onError: () => {
-                toast.error('保存に失敗しました');
+                toast.error('ユーザー追加に失敗しました');
             },
         });
     };
 
+    const openModal = () => setModalIsOpen(true);
+    const closeModal = () => setModalIsOpen(false);
+
+    const userOptions = users.map((user) => ({
+        value: user.id,
+        label: `${user.company_name} ${user.name}`,
+    }));
+
     return {
-        form,
-        handleBarcodeSubmit,
-        selectedBook,
-        setSelectedBook,
-        mode,
-        handleModeChange,
         logs,
+        users,
+        selectedUser,
+        setSelectedUser,
+        modalIsOpen,
+        openModal,
+        closeModal,
+        handleAddUser,
+        userOptions,
     };
 };

@@ -1,0 +1,39 @@
+.modalSelect :global(.react-select__control) {
+    min-height: 32px; /* 👈 デフォルト40px → 小さめに */
+    font-size: 0.875rem;
+}
+
+.modalSelect :global(.react-select__single-value) {
+    font-size: 0.875rem;
+}
+
+.modalButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.modalButtons button {
+    font-size: 0.875rem;
+    padding: 0.4rem 0.8rem; /* 少し小さめに */
+}
+
+.addButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.closeButton {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
