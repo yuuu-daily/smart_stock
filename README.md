@@ -17,6 +17,10 @@ React + TypeScript + Laravelで構築し、管理者が書籍在庫管理でき�
 フロントエンド
 - React: 19.1.3 / TypeScript 5.8.3 / Vite 6.2.4
 - Atomic Design / Storybook / Axios: 1.8.2
+  
+
+  【Storybook画面】
+  ![storybook画面](/public/images/img2.png)
 
 バックエンド
 - Laravel 12 / MySQL 8.0 / Docker / Redis
